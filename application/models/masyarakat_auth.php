@@ -6,4 +6,11 @@ class masyarakat_auth extends CI_Model {
     {
         return  $this->db->insert('masyarakat', array('nik'=> $nik,'nama'=> $nama,'username'=> $username,'password'=> $password,'telp'=> $telp));
     }
+    public function pengaduan($tgl_pengaduan,$isi_laporan,$foto){
+        return  $this->db->insert('pengaduan',array('tgl_pengaduan'=>$tgl_pengaduan,'nik'=>$_SESSION['nik'],'isi_laporan'=>$isi_laporan,'foto'=>$foto,'status'=>'0'));
+    }
+    public function get_data($nik)
+    {
+        return $this->db->get_where('masyarakat',array('nik'=>$nik))->result();
+    }
 }

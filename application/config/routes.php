@@ -67,8 +67,9 @@ $route['petugas_register'] = 'petugas/register';
 $route['masyarakat_laporan'] = 'masyarakat/laporan';
 $route['masyarakat_login'] = 'masyarakat/login';
 $route['masyarakat_register'] = 'masyarakat/register';
+$route['masyarakat_settings'] = 'masyarakat/settings';
 
 
 // SEMENTARA
-$route['sidebar'] = 'auth/sidebar';
+// $route['sidebar'] = 'masyarakat/laporan';
 
