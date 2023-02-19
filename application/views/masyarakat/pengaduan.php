@@ -13,13 +13,13 @@
   <div class="d-flex h-100 form-floating" id="card">
     <div class="mx-auto" id="card-content">
       <div class="card bg-light shadow-sm px-5" style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-      <div class="card-header bg-light px-100">
+      <div class="card-header bg-light mt-1 px-100">
         <div class="text-center" id="card-title">
           <h2>Report</h2>
         </div>
       </div>
       <div class="card-body">
-        <form action="<?php echo site_url('auth/login')?>" method="post" class="form">
+        <form action="<?php echo site_url('auth_masyarakat/pengaduan')?>" method="post" class="form">
 
           <div class="text-center">
             <!-- <input type="text" class="form-control"> -->
@@ -30,14 +30,22 @@
             <!-- <label for="floatingInput"></label> -->
           </div>
           
-          <div class="form-floating mb-5">
-            <input type="text" class="form-control" style="padding-bottom: 200px;" id="floatingPassword" placeholder="complaint">
-            <label for="floatingcomplaint">Complaint</label>
+          <div class="form-group text-center">
+            <label for="comment">Complaint</label>
+            <input class="textarea form-control" name="isi_laporan" rows="10" id="comment" type="text">
+            <!-- <textarea class="form-control" rows="10" id="comment"></textarea> -->
           </div>
+          <!-- <div class="form-floating input-group mb-5">
+          <div class="input-group-prepend">
+            <input type="text" class="form-control input-group-text" style="padding-bottom: 200px;" id="floatingPassword" placeholder="complaint">
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          </div> -->
+
 
           <div class="">
             <!-- <label for="formFile" class="form-label">Default file input example</label> -->
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" name="foto" type="file" id="formFile">
           </div>
 
           <!-- <div class="mb-3">
@@ -47,8 +55,9 @@
           </div> -->
 
           <div class="text-center mb-3">
-            <!-- <input type="text" class="form-control"> -->
-            <div class="rounded" style="border:#dee2e6 solid 1px;background-color:#fff;" id="auto_date">
+            <input type="text" id="auto_date" readonly value="" name="tgl_pengaduan" class="form-control text-center">
+            <!-- <option name="tgl_pengaduan" value="1" id="auto_date"></option> -->
+            <!-- <div class="rounded" style="border:#dee2e6 solid 1px;background-color:#fff;"> -->
             </div>
             <!-- <label for="floatingInput"></label> -->
           </div>
@@ -78,6 +87,6 @@
 <script>
 	var date = new Date();
 	var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-	document.getElementById("auto_date").innerHTML = current_date;
+	document.getElementById("auto_date").value = current_date;
 </script>
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

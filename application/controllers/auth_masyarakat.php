@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class auth extends CI_Controller
+class auth_masyarakat extends CI_Controller
 {
 
 	function __construct()
@@ -17,17 +17,24 @@ class auth extends CI_Controller
 		$this->load->view('sidebar/sidebar2');
 	}
 
-
-
 	public function home()
 	{
 		$this->load->view('home');
 	}
 
 	public function pengaduan(){
+
+		// id_pengaduan	tgl_pengaduan	nik	isi_laporan	foto	status	
 		$tgl_pengaduan = $this->input->post('tgl_pengaduan');
+		$nik = $_SESSION['nik'];
 		$isi_laporan = $this->input->post('isi_laporan');
 		$foto = $this->input->post('foto');
+		
+		$query = $this->masyarakat_auth->pengaduan($tgl_pengaduan, $nik, $isi_laporan, $foto);
+		if($query){
+			redirect('masyarakat/laporan');
+		}
+		// var_dump($tgl_pengaduan);
 	}
 
 	public function register()
@@ -56,7 +63,7 @@ class auth extends CI_Controller
 
 		} else {
 			// echo "Data salah";
-			echo "<script> alert('Duplicate Data') ; </script>";
+			echo '<script> alert("Duplicate Data") ; </script>';
 		}
 
 	}
@@ -76,6 +83,7 @@ class auth extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('masyarakat/login');
 	}
+
 }
 
 	

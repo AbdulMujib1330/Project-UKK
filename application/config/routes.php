@@ -52,16 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Autentication
-$route['default_controller'] = 'auth/home';
-$route['autentication_login'] = 'auth/login';
-$route['autentication_logout'] = 'auth/log_out';
-$route['autentication_session'] = 'auth/register';
-
-// Petugas
-$route['petugas_logout'] = 'petugas/home';
-$route['petugas_login'] = 'petugas/login';
-$route['petugas_register'] = 'petugas/register';
+// Autentication Masyarakat
+$route['default_controller'] = 'auth_masyarakat/home';
+$route['autentication_login'] = 'auth_masyarakat/login';
+$route['autentication_logout'] = 'auth_masyarakat/log_out';
+$route['autentication_session'] = 'auth_masyarakat/register';
 
 // Masyarakat
 $route['masyarakat_laporan'] = 'masyarakat/laporan';
@@ -69,6 +64,17 @@ $route['masyarakat_login'] = 'masyarakat/login';
 $route['masyarakat_register'] = 'masyarakat/register';
 $route['masyarakat_settings'] = 'masyarakat/settings';
 
+// Autentication Petugas
+// $route['default_controller'] = 'auth/home';
+$route['autentication_petugas_login'] = 'auth_petugas/login';
+$route['autentication_petugas_logout'] = 'auth_petugas/log_out';
+$route['autentication_petugas_session'] = 'auth_petugas/register';
+
+// Petugas
+$route['petugas_logout'] = 'petugas/home';
+$route['petugas_login'] = 'petugas/login';
+$route['petugas_register'] = 'petugas/register';
+$route['petugas_tanggapan'] = 'petugas/tanggapan';
 
 // SEMENTARA
 // $route['sidebar'] = 'masyarakat/laporan';

@@ -9,19 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    <?=$_SESSION['nik']?>
-    
-    <?=$_SESSION['username']?>
-    <?=$_SESSION['password']?>
-    <?=$_SESSION['telp']?>
-    <div class="d-flex justify-content-center">
+    <a class="btn btn-primary rounded-0 w-100" style="font-family: Arial, Helvetica, sans-serif;" href="<?php echo site_url('masyarakat/laporan') ?>">Back</a>
+    <div class="d-flex justify-content-center text-center">
         <div class="card">
         <center>
-            <i class='bx bx-user'></i>
+            <i class='bx bx-user' style="font-size: 500px;"></i>
         </center>
-        Hallo<?=$_SESSION['nama']?>
-        </div>
+        Hallo <?=$_SESSION['nama']?>
     </div>
-    <a class="aa nav-link" href="<?php echo site_url('masyarakat/laporan') ?>">back</a>
+</div>
+<?=$_SESSION['nik']?>
+<?=$_SESSION['username']?>
+<?=$_SESSION['password']?>
+<?=$_SESSION['telp']?>
 </body>
 </html>
