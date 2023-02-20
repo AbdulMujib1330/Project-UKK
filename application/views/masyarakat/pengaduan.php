@@ -5,22 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Complaint</title>
 </head>
-<body>
+<style>
+  @media screen and (max-width : 500px){
+    .size{
+      width: 100%;
+    }
+  }
+  @media screen and (min-width : 500px){
+    .size{
+      width: 500px;
+    }
+  }
+  @media screen and (max-height : 700px){
+    .size{
+      height: 100%;
+    }
+    .margin{
+      margin: 0px;
+    }
+    .padding{
+      padding-bottom: 0px;
+    }
+    .textarea{
+      height: 150px;
+      margin-bottom: 5px;
+    }
+  }
+  @media screen and (min-height : 700px){
+    .textarea{
+      height: 100%;
+      margin-bottom: 5px;
+    }
+  }
+</style>
 <body>
   <!-- <div class="underline-title"></div> -->
-  <div class="d-flex h-100 form-floating" id="card">
+  <div class="d-flex form-floating" id="card">
     <div class="mx-auto" id="card-content">
-      <div class="card bg-light shadow-sm px-5" style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+      <div class="card size bg-light shadow-sm px-5" style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
       <div class="card-header bg-light mt-1 px-100">
         <div class="text-center" id="card-title">
-          <h2>Report</h2>
+          <h2>Complaint</h2>
         </div>
       </div>
-      <div class="card-body">
-        <form action="<?php echo site_url('auth_masyarakat/pengaduan')?>" method="post" class="form">
-
+      <div class="card-body padding">
+        <!-- <form action="<?php echo site_url('auth_masyarakat/pengaduan')?>" method="post" enctype="multipart/form-data" class="form"> -->
+<?php echo form_open_multipart('auth_masyarakat/pengaduan');?>
           <div class="text-center">
             <!-- <input type="text" class="form-control"> -->
             <span>Your Nik</span>
@@ -32,7 +64,7 @@
           
           <div class="form-group text-center">
             <label for="comment">Complaint</label>
-            <input class="textarea form-control" name="isi_laporan" rows="10" id="comment" type="text">
+            <textarea class="textarea form-control" name="isi_laporan" rows="10" id="comment" type="text"></textarea>
             <!-- <textarea class="form-control" rows="10" id="comment"></textarea> -->
           </div>
           <!-- <div class="form-floating input-group mb-5">
@@ -54,7 +86,7 @@
             <label for="floatingInput">Date</label>
           </div> -->
 
-          <div class="text-center mb-3">
+          <div class="text-center margin mb-3">
             <input type="text" id="auto_date" readonly value="" name="tgl_pengaduan" class="form-control text-center">
             <!-- <option name="tgl_pengaduan" value="1" id="auto_date"></option> -->
             <!-- <div class="rounded" style="border:#dee2e6 solid 1px;background-color:#fff;"> -->
@@ -75,13 +107,13 @@
             </center>
           </div>
                   
-      </form>
+        <!-- </form> -->
+<?php echo form_close();?>
       </div>
       </div>
     </div>
   </div>
   
-</body>
 </body>
 </html>
 <script>

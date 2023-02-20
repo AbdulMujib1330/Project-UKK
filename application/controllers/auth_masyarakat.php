@@ -25,11 +25,24 @@ class auth_masyarakat extends CI_Controller
 	public function pengaduan(){
 
 		// id_pengaduan	tgl_pengaduan	nik	isi_laporan	foto	status	
-		$tgl_pengaduan = $this->input->post('tgl_pengaduan');
-		$nik = $_SESSION['nik'];
-		$isi_laporan = $this->input->post('isi_laporan');
-		$foto = $this->input->post('foto');
-		
+		$tgl_pengaduan 	= $this->input->post('tgl_pengaduan');
+		$nik 			= $_SESSION['nik'];
+		$isi_laporan 	= $this->input->post('isi_laporan');
+		// $foto 			= $this->input->post('foto');
+		$foto 			= $_FILES['foto'];
+		if ($foto=''){}
+		else{
+			$config['upload_path']		= '.image/report';
+			$config['allowed_types']	= 'jpg|png|gif';
+			$this->load->library('upload', $config);
+			if(!$this->upload->do_upload()('foto')){
+				echo "Gagal"; die();
+			}else{
+				$foto = $this->upload->data('file_name');
+			}
+		}
+		// $img = $_FILES['img']['name'];
+		// $img_tmp = $_FILES['img']['tmp_name'];
 		$query = $this->masyarakat_auth->pengaduan($tgl_pengaduan, $nik, $isi_laporan, $foto);
 		if($query){
 			redirect('masyarakat/laporan');

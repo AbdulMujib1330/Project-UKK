@@ -30,12 +30,12 @@
     text-decoration: none;
     color:#2dbd6e;
   }
-  @media screen and (max-width :370px){
+  @media screen and (max-width : 500px){
     div.width{
       width: 100%;
     }
   }
-  @media screen and (min-width : 370px){
+  @media screen and (min-width : 500px){
     div.width{
       width:400px; 
     }
