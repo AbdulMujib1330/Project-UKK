@@ -22,7 +22,8 @@ class auth_masyarakat extends CI_Controller
 		$this->load->view('home');
 	}
 
-	public function pengaduan(){
+	public function pengaduan()
+	{
 
 		// id_pengaduan	tgl_pengaduan	nik	isi_laporan	foto	status	
 		$tgl_pengaduan 	= $this->input->post('tgl_pengaduan');
@@ -30,21 +31,37 @@ class auth_masyarakat extends CI_Controller
 		$isi_laporan 	= $this->input->post('isi_laporan');
 		// $foto 			= $this->input->post('foto');
 		$foto 			= $_FILES['foto'];
-		if ($foto=''){}
-		else{
-			$config['upload_path']		= '.image/report';
-			$config['allowed_types']	= 'jpg|png|gif';
+
+		if ($foto = '') {
+		} else {
+			var_dump(is_dir('./uploads/'));
+			// TES
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size'] = 0;
+			$config['max_width'] = 0;
+			$config['max_height'] = 0;
+			$config['encrypt_name'] = TRUE;
+
+			var_dump($config);
 			$this->load->library('upload', $config);
-			if(!$this->upload->do_upload()('foto')){
-				echo "Gagal"; die();
-			}else{
-				$foto = $this->upload->data('file_name');
+			$this->upload->initialize($config);
+			if ($this->upload->do_upload('foto')) {
+
+				echo "yes";
+			} else {
+				// print_r($this->upload->display_errors());
+				// die();
+				// alert("Only Jpg Or Png");
+				// 				$message = "Only Jpg Or Png";
+				// echo "<script type='text/javascript'>alert('$message');</script>";
+				redirect('masyarakat/pengaduan');
 			}
 		}
 		// $img = $_FILES['img']['name'];
 		// $img_tmp = $_FILES['img']['tmp_name'];
-		$query = $this->masyarakat_auth->pengaduan($tgl_pengaduan, $nik, $isi_laporan, $foto);
-		if($query){
+		$query = $this->masyarakat_auth->pengaduan($tgl_pengaduan, $nik, $isi_laporan, $this->upload->data()['file_name']);
+		if ($query) {
 			redirect('masyarakat/laporan');
 		}
 		// var_dump($tgl_pengaduan);
@@ -78,26 +95,25 @@ class auth_masyarakat extends CI_Controller
 			// echo "Data salah";
 			echo '<script> alert("Duplicate Data") ; </script>';
 		}
-
 	}
-	
+
 	public function login()
 	{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		
+
 		// $this->load->model('masyarakat_login');
 		$this->masyarakat_login->ambillogin($username, $password);
 	}
-	
+
 	public function logout()
 	{
 		// $this->session->set_userdata('username',FALSE);
 		$this->session->sess_destroy();
 		redirect('masyarakat/login');
 	}
-
 }
+
 
 	
 	
