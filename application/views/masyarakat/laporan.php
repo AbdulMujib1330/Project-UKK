@@ -78,13 +78,15 @@
   /* .bx{
   font-size: 20px;
 } */
+
 </style>
 
 <body>
 
+
   <!-- navbar -->
 
-  <nav class="navbar navbar-expand-lg navbar-light primary">
+  <nav class="navbar position-fixed navbar-expand-lg navbar-light primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,10 +117,6 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <!-- <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
       </div>
     </div>
   </nav>
@@ -183,6 +181,7 @@
                       <th>Report</th>
                       <th>Foto</th>
                       <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -193,6 +192,9 @@
                         <td><?= $data['isi_laporan'] ?></td>
                         <td><img width="80px" src="<?= base_url() . "uploads/" . $data['foto'] ?>" alt="" srcset=""></td>
                         <td><?= $data['status'] ?></td>
+                        <td>
+                          <a href="" class="btn btn-primary"  >Update</a> | <a href="" class="btn btn-danger"   >Delete</a>
+                        </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
